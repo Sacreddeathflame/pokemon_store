@@ -1,0 +1,2 @@
+class TechnicalMachine < ApplicationRecord
+end
