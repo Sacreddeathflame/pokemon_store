@@ -6,6 +6,7 @@ class CreateTechnicalMachines < ActiveRecord::Migration[5.1]
       t.decimal :price
       t.integer :quantity
       t.string :image
+      t.integer :type_id
 
       t.timestamps
     end

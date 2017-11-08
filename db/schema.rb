@@ -50,11 +50,31 @@ ActiveRecord::Schema.define(version: 20171108074547) do
     t.string "country"
     t.string "address"
     t.string "email"
+    t.integer "province_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "line_items", force: :cascade do |t|
+    t.decimal "price"
+    t.integer "quantity"
+    t.integer "technical_machine_id"
+    t.integer "order_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "orders", force: :cascade do |t|
+    t.decimal "pst_rate"
+    t.decimal "gst_rate"
+    t.decimal "hst_rate"
+    t.integer "customer_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "provinces", force: :cascade do |t|
+    t.string "name"
     t.decimal "pst_rate"
     t.decimal "gst_rate"
     t.decimal "hst_rate"
@@ -68,6 +88,13 @@ ActiveRecord::Schema.define(version: 20171108074547) do
     t.decimal "price"
     t.integer "quantity"
     t.string "image"
+    t.integer "type_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "types", force: :cascade do |t|
+    t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
