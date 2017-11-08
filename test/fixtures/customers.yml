@@ -7,7 +7,6 @@ one:
   country: MyString
   address: MyString
   email: MyString
-  province_id: 1
 
 two:
   first_name: MyString
@@ -16,4 +15,3 @@ two:
   country: MyString
   address: MyString
   email: MyString
-  province_id: 1
