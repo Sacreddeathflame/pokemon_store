@@ -1,5 +1,5 @@
 class TechnicalMachine < ApplicationRecord
-  belongs_to :types
+  belongs_to :type
   has_many :line_items
   has_many :orders, :through => :line_items
 

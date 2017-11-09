@@ -47,7 +47,7 @@ ActiveRecord::Schema.define(version: 20171108074547) do
     t.string "first_name"
     t.string "last_name"
     t.string "city"
-    t.string "country"
+    t.string "location"
     t.string "address"
     t.string "email"
     t.integer "province_id"
