@@ -7,4 +7,5 @@ class TechnicalMachine < ApplicationRecord
   validates :name, uniqueness: true
   validates :price, numericality: true
   validates :quantity, numericality: { only_integer: true }
+  validates :type_id, presence: true
 end
