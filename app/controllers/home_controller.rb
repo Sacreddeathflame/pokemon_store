@@ -1,7 +1,11 @@
 class HomeController < ApplicationController
   def index
-    @tms = TechnicalMachine.all
 
+    if params[:search]
+      @tms = TechnicalMachine.search(params[:search]).order("name ASC")
+    else
+      @tms = TechnicalMachine.all.order("name ASC")
+    end
 
   end
 

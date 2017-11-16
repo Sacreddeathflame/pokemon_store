@@ -8,4 +8,8 @@ class TechnicalMachine < ApplicationRecord
   validates :price, numericality: true
   validates :quantity, numericality: { only_integer: true }
   validates :type_id, presence: true
+
+  def self.search(search)
+    where("name LIKE ?", "%#{search}%")
+  end
 end

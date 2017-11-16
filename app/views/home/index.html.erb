@@ -1,26 +1,35 @@
 <h1>Pokemon TM Store</h1>
 <h2>Product Listings</h2>
 
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Price</th>
-      <th>Stock quantity</th>
-      <th>Type</th>
-      <th>More Info</th>
-    </tr>
-  </thead>
+<%= form_tag(index_path, :method => "get", id: "search-form") do %>
+    <%= text_field_tag :search, params[:search], placeholder: "Search TMs" %>
+    <%= submit_tag "Search", :name => nil %>
+<% end %>
 
-  <tbody>
-    <% @tms.each do |tm| %>
+<% if @tms.blank? %>
+  <p>There are no TMs with the name of: <%= params[:search] %>.</p>
+<% else %>
+  <table>
+    <thead>
       <tr>
-        <td><%= tm.name %></td>
-        <td><%= tm.price %></td>
-        <td><%= tm.quantity %></td>
-        <td><%= tm.type.name %></td>
-        <td><%= link_to 'Show More', tm %></td>
+        <th>Name</th>
+        <th>Price</th>
+        <th>Stock quantity</th>
+        <th>Type</th>
+        <th>More Info</th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
+
+    <tbody>
+      <% @tms.each do |tm| %>
+        <tr>
+          <td><%= tm.name %></td>
+          <td><%= tm.price %></td>
+          <td><%= tm.quantity %></td>
+          <td><%= tm.type.name %></td>
+          <td><%= link_to 'Show More', tm %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% end %>
