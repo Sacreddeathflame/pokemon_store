@@ -10,6 +10,15 @@ class TechnicalMachine < ApplicationRecord
   validates :type_id, presence: true
 
   def self.search(search)
-    where("name LIKE ?", "%#{search}%")
+    where("name LIKE ? OR description LIKE ?", "%#{search}%", "%#{search}%")
   end
+
+  def self.type_search(type)
+    where("type_id = ?", "#{type}")
+  end
+
+  def self.full_search(search, type)
+    where("name LIKE ? OR description LIKE ? AND type_id = ?", "%#{search}%", "%#{search}%", "#{type}")
+  end
+
 end

@@ -3,16 +3,20 @@
 
 <%= form_tag(index_path, :method => "get", id: "search-form") do %>
     <%= text_field_tag :search, params[:search], placeholder: "Search TMs" %>
+    <%= select_tag "type_id", content_tag(:option, '', :value => "") + options_from_collection_for_select(Type.all, "id", "name", params[:type_id]) %>
     <%= submit_tag "Search", :name => nil %>
 <% end %>
 
+
+
 <% if @tms.blank? %>
-  <p>There are no TMs with the name of: <%= params[:search] %>.</p>
+    <p>There are no TMs found.</p>
 <% else %>
   <table>
     <thead>
       <tr>
         <th>Name</th>
+        <th>Description</th>
         <th>Price</th>
         <th>Stock quantity</th>
         <th>Type</th>
@@ -24,6 +28,7 @@
       <% @tms.each do |tm| %>
         <tr>
           <td><%= tm.name %></td>
+          <td><%= tm.description %></td>
           <td><%= tm.price %></td>
           <td><%= tm.quantity %></td>
           <td><%= tm.type.name %></td>
