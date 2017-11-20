@@ -14,4 +14,9 @@ class HomeController < ApplicationController
   def show
     @tm = TechnicalMachine.find(params[:id])
   end
+
+  def information
+    @info = Information.first
+    @test = "This is a test"
+  end
 end

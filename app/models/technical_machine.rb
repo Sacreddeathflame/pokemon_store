@@ -7,7 +7,7 @@ class TechnicalMachine < ApplicationRecord
   validates :name, uniqueness: true
   validates :price, numericality: true
   validates :quantity, numericality: { only_integer: true }
-  validates :type_id, presence: true
+  validates :type_id, :status, presence: true
 
   def self.search(search)
     where("name LIKE ? OR description LIKE ?", "%#{search}%", "%#{search}%")

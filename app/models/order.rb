@@ -4,5 +4,5 @@ class Order < ApplicationRecord
   belongs_to :customer
 
   validates :pst_rate, :gst_rate, :hst_rate, numericality: true
-  validates :pst_rate, :gst_rate, :hst_rate, :customer_id, presence: true
+  validates :pst_rate, :gst_rate, :hst_rate, :customer_id, :status, presence: true
 end
