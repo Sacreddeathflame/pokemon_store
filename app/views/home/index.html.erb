@@ -1,9 +1,12 @@
 <h1>Pokemon TM Store</h1>
 <h2>Product Listings</h2>
 
+<p><%= link_to "About", information_path %></p>
+
 <%= form_tag(index_path, :method => "get", id: "search-form") do %>
     <%= text_field_tag :search, params[:search], placeholder: "Search TMs" %>
     <%= select_tag "type_id", content_tag(:option, '', :value => "") + options_from_collection_for_select(Type.all, "id", "name", params[:type_id]) %>
+    <%= select_tag "filter", options_for_select([["", ""], ["Search by New", "New"], ["Search by Recent", "Recently Updated"]], params[:filter]) %>
     <%= submit_tag "Search", :name => nil %>
 <% end %>
 
@@ -17,6 +20,7 @@
       <tr>
         <th>Name</th>
         <th>Description</th>
+        <th>Status</th>
         <th>Price</th>
         <th>Stock quantity</th>
         <th>Type</th>
@@ -29,6 +33,7 @@
         <tr>
           <td><%= tm.name %></td>
           <td><%= tm.description %></td>
+          <td><%= tm.status %></td>
           <td><%= tm.price %></td>
           <td><%= tm.quantity %></td>
           <td><%= tm.type.name %></td>

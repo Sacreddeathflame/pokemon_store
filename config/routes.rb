@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  get 'index', to: 'home#index'
+  get 'index', to: 'home#index', as: 'index'
   get 'technical_machines/:id', to: 'home#show', as: 'technical_machine'
   get 'information', to: 'home#information', as: 'information'
 
