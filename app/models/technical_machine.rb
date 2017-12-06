@@ -1,6 +1,6 @@
 class TechnicalMachine < ApplicationRecord
   belongs_to :type
-  belongs_to :pictures
+  belongs_to :picture
   has_many :line_items
   has_many :orders, :through => :line_items
 
