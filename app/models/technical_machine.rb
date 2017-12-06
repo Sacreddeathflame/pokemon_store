@@ -1,5 +1,6 @@
 class TechnicalMachine < ApplicationRecord
   belongs_to :type
+  belongs_to :pictures
   has_many :line_items
   has_many :orders, :through => :line_items
 
@@ -23,5 +24,5 @@ class TechnicalMachine < ApplicationRecord
 
   def self.all_search(filter)
     where("status LIKE ?", "#{filter}")
-  end 
+  end
 end
