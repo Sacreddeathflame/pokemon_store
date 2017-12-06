@@ -13,5 +13,13 @@ ActiveAdmin.register Picture do
 # end
 permit_params :title, :body, :image
 
+form :html => { :enctype => "multipart/form-data" } do |f|
+    f.inputs do
+      f.input :title
+      f.input :body
+      f.input :image, required: true, as: :file
+    end
+    f.actions
+  end
 
 end
