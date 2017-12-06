@@ -25,7 +25,7 @@
     <tbody>
       <% @tms.each do |tm| %>
         <tr>
-          <td></td>
+          <td><%= image_tag tm.picture.image %></td>
           <td><%= tm.name %></td>
           <td><%= tm.description %></td>
           <td><%= tm.status %></td>
