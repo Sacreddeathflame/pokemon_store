@@ -19,6 +19,7 @@
         <th>Stock quantity</th>
         <th>Type</th>
         <th>More Info</th>
+        <th>Add to Cart</th>
       </tr>
     </thead>
 
@@ -33,6 +34,7 @@
           <td><%= tm.quantity %></td>
           <td><%= tm.type.name %></td>
           <td><%= link_to 'Show More', tm %></td>
+          <td><%= link_to 'Add', "#" %></td>
         </tr>
       <% end %>
     </tbody>
