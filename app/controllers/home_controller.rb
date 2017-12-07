@@ -30,7 +30,7 @@ class HomeController < ApplicationController
   end
 
   def add_to_cart
-    session[:cart] << id unless session[:cart].include?(id)
+    session[:cart] << params[:id].to_i unless session[:cart].include?(params[:id].to_i)
 
     redirect_to root_url
   end

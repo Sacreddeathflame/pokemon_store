@@ -4,6 +4,12 @@ Rails.application.routes.draw do
   get 'technical_machines/:id', to: 'home#show', as: 'technical_machine'
   get 'information', to: 'home#information', as: 'information'
 
+  resources :home, only: [:index] do
+    member do
+      post :add_to_cart
+    end
+  end
+
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
 

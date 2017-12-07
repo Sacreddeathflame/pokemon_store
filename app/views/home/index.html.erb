@@ -34,10 +34,19 @@
           <td><%= tm.quantity %></td>
           <td><%= tm.type.name %></td>
           <td><%= link_to 'Show More', tm %></td>
-          <td><%= link_to 'Add', "#" %></td>
+          <td><%= link_to 'Add', add_to_cart_home_path(tm), method: :post %></td>
         </tr>
       <% end %>
     </tbody>
   </table>
 <% end %>
 <%= paginate @tms %>
+
+<% if @tms_in_cart.any? %>
+  <h2>TMs in Cart:</h2>
+  <ol>
+    <% @tms_in_cart.each do |tm| %>
+      <li><%= tm.name %></li>
+    <% end %>
+  </ol>
+<% end %>
