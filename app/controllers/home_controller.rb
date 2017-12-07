@@ -1,4 +1,7 @@
 class HomeController < ApplicationController
+  before_action :initialize_session
+  before_action :load_tms, only: [:index]
+
   def index
     filter = ''
     if !params[:filter].blank?
@@ -25,4 +28,22 @@ class HomeController < ApplicationController
   def information
     @info = Information.first
   end
+
+  def add_to_cart
+    session[:cart] << id unless session[:cart].include?(id)
+
+    redirect_to root_url
+  end
+
+  def load_tms
+    @tms_in_cart = TechnicalMachine.find(session[:cart])
+  end
+
+  private
+
+  def initialize_session
+    session[:cart] ||= []
+  end
+
+
 end
